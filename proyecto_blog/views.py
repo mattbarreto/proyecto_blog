@@ -20,7 +20,7 @@ def login_request(request):
             
             if user is not None:
                 login(request, user)
-                return redirect('Inicio')
+                return redirect('index')
             else:
                 return render(request, "login.html",
                     {'form': form,
@@ -62,7 +62,7 @@ def editar_perfil(request):
             usuario.password1 = data['password1']
             usuario.password2 = data['password2']
             usuario.save()
-            return redirect('Inicio')
+            return redirect('index')
     else:
         formulario = UserEditForm({'email':usuario.email})
         
