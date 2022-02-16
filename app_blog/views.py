@@ -6,6 +6,7 @@ from app_blog.models import Avatar
 # Create your views here.
 
 def home(request):
+<<<<<<< HEAD
     avatares = Avatar.objects.filter(user=request.user.id)
     if avatares:
         avatar_url = avatares.last().imagen.url
@@ -29,3 +30,21 @@ def agregar_avatar(request):
         
     return render(request, 'crear_avatar.html', {'form': formulario})
     
+=======
+    return render(request, 'index.html')
+
+def about(request):
+    return render(request, 'about.html')
+
+def contacto(request):
+    return render(request, 'contact.html')
+
+def nutricion(request):
+    return render(request, 'nutricion.html')
+
+def rutinas(request):
+    return render(request, 'rutinas.html')
+
+def saludable(request):
+    return render(request, 'saludable.html')
+>>>>>>> 9871151feb3b769735fcf070f2bcc50e8767c010
