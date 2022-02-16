@@ -9,9 +9,9 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         
-        {% block titulo %}
-        <title>Nuestro nuevo Blog</title>
-        {% endblock titulo %}
+        
+        <title>{% block titulo %}Nuestro nuevo Blog{% endblock titulo %}</title>
+        
 
         <link rel="icon" type="image/x-icon" href="{% static 'app_blog/assets/favicon.ico' %}" />
         <!-- Font Awesome icons (free version)-->
@@ -39,17 +39,20 @@
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'nutricion' %}">Nutricion</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'saludable' %}">Tips saludables</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'contacto' %}">Contacto</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"> Usuario: {{user.username}}</a></li>
+                        <li><img src="{{avatar_url}}"height= "50px"/></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'logout' %}">Salir de la sesión</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('{% static 'app_blog/assets/img/home-bg.jpg' %}')">
+        <header class="masthead" style="background-image: url({% block imagen_header %}{% static 'app_blog/assets/img/home-bg.jpg' %}{% endblock imagen_header %})">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="site-heading">
-                            <h1>Nuevo Blog</h1>
+                            <h1>{% block titulos_secciones %}Nuevo Blog{% endblock titulos_secciones %}</h1>
                             <span class="subheading">Un blog dedicado a los deportes</span>
                         </div>
                     </div>
@@ -61,19 +64,24 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <!-- Post preview-->
-                    <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">Man must explore, and this is exploration at its greatest</h2>
-                            <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Start Bootstrap</a>
-                            on September 24, 2021
-                        </p>
-                    </div>
-                    <!-- Divider-->
-                    <hr class="my-4" />
+                    {% if post %}
+                        {% for p in post %}
+                            <div class="post-preview">
+                                <a href="blog.html">
+                                <h2 class="post-title">{{p.titulo}}</h2>
+                                <h3 class="post-subtitle">{{p.descripcion}}</h3>
+                                </a>
+                                <p class="post-meta">
+                                <a href="#!">{{p.autor}}</a>
+                                {{p.fecha_creacion}}
+                                </p>
+                                </div>
+                                <!-- Divider-->
+                                <hr class="my-4" />
+                        {% endfor %}
+                    {% else %}
+                        <h3>No existen posteos registrados en esta categoria.</h3>
+                    {% endif %}
                     <!-- Pager-->
                     <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
                 </div>
