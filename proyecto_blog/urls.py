@@ -27,8 +27,7 @@ urlpatterns = [
     path('login', login_request, name='Login'),
     path('registro', register, name='Registro'),
     path('logout', LogoutView.as_view(template_name= 'logout.html'), name='logout'),
-    path('user/edit', editar_perfil, name= 'editar_perfil') 
-    
+    path('user/edit', editar_perfil, name= 'editar_perfil'),   
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

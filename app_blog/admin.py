@@ -1,5 +1,5 @@
 from django.contrib import admin
-from app_blog.models import Categoria, Autor, Post
+from app_blog.models import Categoria, Autor, Post, Comentario, PostView
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
@@ -25,3 +25,5 @@ class AutorAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 admin.site.register(Categoria, CategoriaAdmin)
 admin.site.register(Autor, AutorAdmin)
 admin.site.register(Post,)
+admin.site.register(PostView,)
+admin.site.register(Comentario)

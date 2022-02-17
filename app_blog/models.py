@@ -8,9 +8,7 @@ from django.urls import reverse_lazy
 from django.db.models import Model, ForeignKey, ImageField, CASCADE
 # from django.db.models.fields import CharField
 
-
 # Create your models here.
-
 class Categoria(Model):
     id = models.AutoField(primary_key = True)
     nombre = models.CharField ('Nombre de la Categoría', max_length = 100, null = False, blank = False)
@@ -42,16 +40,16 @@ class Autor(Model):
         return f'Autor: {self.nombre} {self.apellido}'
 
 class Post(Model):
-    id = models.AutoField(primary_key = True)
-    titulo = models.CharField('Título', max_length = 100, blank = False, null = False)
-    autor = models.ForeignKey(Autor, on_delete = models.CASCADE)
+    id = models.AutoField(primary_key=True)
+    titulo = models.CharField('Título', max_length=100, blank=False, null=False)
+    autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     descripcion = models.CharField('Descripción', max_length=255, blank=False, null=False)
     contenido = RichTextField()
     imagen = models.URLField('Imagen', max_length=255, blank=False, null=False)
-    slug = models.CharField('Slug', max_length = 100, blank = False, null = False)
-    estado = models.BooleanField('Publicado/No Publicado', default = True)
-    fecha_creacion = models.DateField('Fecha de Creación', auto_now = False, auto_now_add = True)
+    slug = models.CharField('Slug', max_length=100, blank=False, null=False)
+    estado = models.BooleanField('Publicado/No Publicado', default=True)
+    fecha_creacion = models.DateField('Fecha de Creación', auto_now=False, auto_now_add=True)
 
     class Meta:
         verbose_name = 'Post'
@@ -59,10 +57,24 @@ class Post(Model):
 
     def __str__(self):
         return self.titulo
-    
+
+class Comentario(Model):
+    # user = models.ForeignKey()
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    fecha = models.DateTimeField(auto_now_add=True)
+    contenido = models.TextField()
+
+    def __str__(self):
+        return self.user.username
+
+class PostView(Model):
+    # user = models.ForeignKey()
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    fecha = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.username
+
 class Avatar(Model):
     user = ForeignKey(User, on_delete=CASCADE)
     imagen = ImageField(upload_to= 'avatares', null=True, blank= True)
-
-class Slug(Model):
-    slug = models.SlugField(max_length=20, unique=True)
