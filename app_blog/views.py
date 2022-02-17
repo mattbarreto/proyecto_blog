@@ -15,6 +15,13 @@ def home(request):
         avatar_url = ''
     return render(request, 'index.html', {'avatar_url': avatar_url, 'post': post})
 
+def detallePost(request,slug):
+    post = Post.objects.get(
+        slug = slug
+    )
+    print(post)
+    return render(request, 'post.html')
+
 # Avatar
 def agregar_avatar(request):
     if request.method == 'POST':

@@ -30,4 +30,5 @@ urlpatterns = [
     path('user/edit', editar_perfil, name= 'editar_perfil'),   
 ]
 
+
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
