@@ -1,3 +1,4 @@
+from http.client import HTTPResponse
 from django.shortcuts import render, redirect
 from app_blog.forms import AvatarFormulario
 from app_blog.models import Avatar, Categoria, Post
@@ -121,3 +122,25 @@ def agregar_avatar(request):
         formulario = AvatarFormulario()
 
     return render(request, 'crear_avatar.html', {'form': formulario})
+
+
+
+
+def post_busqueda(request):
+
+    return render(request, 'rutinas_busqueda.html')
+
+
+
+
+def buscar_post(request):
+    if request.GET["pos"]:
+        posteo = request.GET["pos"]
+        poste = Post.objects.filter(titulo__icontains=posteo)
+        return render(request, "posts.html", {"poste": poste, "query": posteo})
+    else:
+        mensaje = "Por favor, introduzca un nombre para comenzar la búsqueda"
+    return HTTPResponse(mensaje)
+        
+        
+

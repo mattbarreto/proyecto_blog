@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carga de Rutinas</title>
+</head>
+
+<body>
+
+    <p>Estás buscando: <strong>{{query}} </strong> </p>
+{% if poste%}
+
+    <p>Rutinas encontradas: {{poste|length}} rutinas </p>
+    <ul>
+
+        {% for post in poste %}
+        <li>
+            <p>Nombre: {{post.titulo}}</p>
+            <p>Nombre: {{post.descripcion}}</p>
+            <p>Nombre: {{post.contenido}}</p>
+            
+
+            <a class="header__button" href="{% url 'index' %}">Volver al Inicio</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+<p>No existe la rutina solicitada</p>
+<a href="{% url 'index' %}">Volver al Inicio</a>
+
+{% endif %}
+
+
+
+</body>
+
+</html>
