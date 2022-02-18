@@ -29,26 +29,27 @@ def agregar_avatar(request):
         
     return render(request, 'crear_avatar.html', {'form': formulario})
 
+def nutricion(request):
+    post = Post.objects.filter(
+        estado=True, 
+        categoria=Categoria.objects.get(nombre__iexact='Nutricion')
+    )
+    return render(request, 'nutricion.html', {'post':post})
+
+def rutinas(request):
+    post = Post.objects.filter(estado=True, categoria=Categoria.objects.get(nombre__iexact='Rutinas'))
+    return render(request, 'rutinas.html', {'post': post})
+
+def saludable(request):
+    post = Post.objects.filter(estado=True, categoria=Categoria.objects.get(nombre__iexact='Saludable'))
+    return render(request, 'saludable.html', {'post': post})
+
+def leer(request):
+    post = Post.objects.filter(estado = True)
+    return render(request, 'post.html', {'post':post})
 
 def about(request):
     return render(request, 'about.html')
 
 def contacto(request):
     return render(request, 'contact.html')
-
-def nutricion(request):
-    post = Post.objects.filter(
-        estado=True, 
-        categoria = Categoria.objects.get(nombre = 'Nutricion')
-    )
-    return render(request, 'nutricion.html', {'post':post})
-
-def rutinas(request):
-    post = Post.objects.filter(estado=True, categoria=Categoria.objects.get(nombre='Rutinas'))
-    return render(request, 'rutinas.html', {'post': post})
-
-def saludable(request):
-    post = Post.objects.filter(estado=True, categoria=Categoria.objects.get(nombre='Saludable'))
-    return render(request, 'saludable.html', {'post': post})
-
-
