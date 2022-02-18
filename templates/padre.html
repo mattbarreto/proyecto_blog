@@ -59,6 +59,26 @@
                 </div>
             </div>
         </header>
+    {% block contenido %}
+
+<div class ="container">
+    <div class = "row">
+        <div class="col-md-12 search">
+            <form method="get">
+                <div id ="custom-search-imput">
+                    <div class="imput-group col-md-12">
+                        <input type="text" class="form-control" placeholder="Buscar..." name="buscar">
+                        <span class="imput-group-list">
+                            <i class="icon icon-search"></i>
+                            <button type="submit" class="boton btn-succes">Buscar</button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
         <!-- Main Content-->
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -67,7 +87,7 @@
                     {% if post %}
                         {% for p in post %}
                             <div class="post-preview">
-                                {% comment %} <a href="{% url '' %}">  {% endcomment %}
+                                <a href="href="{% url 'app_blog:detalle_post' post.slug %}">  
                                 <h2 class="post-title">{{p.titulo}}</h2>
                                 <h3 class="post-subtitle">{{p.descripcion}}</h3>
                                 </a>
@@ -87,6 +107,7 @@
                 </div>
             </div>
         </div>
+    {% endblock contenido %}
         <!-- Footer-->
         <footer class="border-top">
             <div class="container px-4 px-lg-5">

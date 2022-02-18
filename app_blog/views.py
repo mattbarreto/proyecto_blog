@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from app_blog.forms import AvatarFormulario
 from app_blog.models import Avatar, Categoria, Post
+from django.db.models import Q
 
 # Create your views here.
 
 def home(request):
-
+    queryset = request.GET.get("buscar")
+         
     post = Post.objects.filter(estado = True)
     
     avatares = Avatar.objects.filter(user=request.user.id)
@@ -16,11 +18,8 @@ def home(request):
     return render(request, 'index.html', {'avatar_url': avatar_url, 'post': post})
 
 def detallePost(request,slug):
-    post = Post.objects.get(
-        slug = slug
-    )
-    print(post)
-    return render(request, 'post.html')
+    post = get_object_or_404(Post,slug = slug)
+    return render(request, 'post.html', {'detalle_post':post})
 
 # Avatar
 def agregar_avatar(request):
@@ -53,16 +52,16 @@ def contacto(request):
 def nutricion(request):
     post = Post.objects.filter(
         estado=True, 
-        categoria = Categoria.objects.get(nombre = 'Nutricion')
+        categoria = Categoria.objects.get(nombre__iexact = 'Nutricion')
     )
     return render(request, 'nutricion.html', {'post':post})
 
 def rutinas(request):
-    post = Post.objects.filter(estado=True, categoria=Categoria.objects.get(nombre='Rutinas'))
+    post = Post.objects.filter(estado=True, categoria=Categoria.objects.get(nombre__iexact='Rutinas'))
     return render(request, 'rutinas.html', {'post': post})
 
 def saludable(request):
-    post = Post.objects.filter(estado=True, categoria=Categoria.objects.get(nombre='Saludable'))
+    post = Post.objects.filter(estado=True, categoria=Categoria.objects.get(nombre__iexact='Saludable'))
     return render(request, 'saludable.html', {'post': post})
 
 
