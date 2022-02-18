@@ -11,6 +11,6 @@ urlpatterns = [
     path('nutricion', nutricion, name='nutricion'),
     path('rutinas', rutinas, name='rutinas'),
     path('saludable', saludable, name='saludable'),
-    path('<slug:slug>', detallePost, name = 'detalle_post'),
+    # path('<slug:slug>', detallePost, name = 'detalle_post'),
     
 ]

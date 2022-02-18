@@ -9,6 +9,11 @@ def home(request):
     queryset = request.GET.get("buscar")
          
     post = Post.objects.filter(estado = True)
+    if queryset:
+        post = Post.objects.filter(
+            Q(titulo__icontains = queryset) |
+            Q(descripcion__icontains = queryset)
+        ).distinct()
     
     avatares = Avatar.objects.filter(user=request.user.id)
     if avatares:
@@ -50,18 +55,50 @@ def contacto(request):
     return render(request, 'contact.html')
 
 def nutricion(request):
+    queryset = request.GET.get("buscar")
     post = Post.objects.filter(
         estado=True, 
         categoria = Categoria.objects.get(nombre__iexact = 'Nutricion')
     )
+    if queryset:
+        post = Post.objects.filter(
+            Q(titulo__icontains = queryset) |
+            Q(descripcion__icontains = queryset),
+            estado=True, 
+            categoria = Categoria.objects.get(nombre__iexact = 'Nutricion')
+        ).distinct()
     return render(request, 'nutricion.html', {'post':post})
 
 def rutinas(request):
-    post = Post.objects.filter(estado=True, categoria=Categoria.objects.get(nombre__iexact='Rutinas'))
+    queryset = request.GET.get("buscar")
+    post = Post.objects.filter(
+        estado=True, 
+        categoria=Categoria.objects.get(nombre__iexact='Rutinas')
+    )
+    if queryset:
+        post = Post.objects.filter(
+            Q(titulo__icontains = queryset) |
+            Q(descripcion__icontains = queryset),
+            estado=True, 
+            categoria = Categoria.objects.get(nombre__iexact = 'Rutinas')
+        ).distinct()
+    
     return render(request, 'rutinas.html', {'post': post})
 
 def saludable(request):
-    post = Post.objects.filter(estado=True, categoria=Categoria.objects.get(nombre__iexact='Saludable'))
+    queryset = request.GET.get("buscar")
+    post = Post.objects.filter(
+        estado=True, 
+        categoria=Categoria.objects.get(nombre__iexact='Saludable')
+        )
+    if queryset:
+        post = Post.objects.filter(
+            Q(titulo__icontains = queryset) |
+            Q(descripcion__icontains = queryset),
+            estado=True, 
+            categoria = Categoria.objects.get(nombre__iexact = 'Saludable')
+        ).distinct()
+        
     return render(request, 'saludable.html', {'post': post})
 
 

@@ -18,7 +18,8 @@
     <p>Escrito por:{{ detalle_post.autor }}</p>
 {% endblock titulo_principal %}
 
-
+{% block barra_busqueda %}
+{% endblock barra_busqueda %}
 {% block contenido %}
     {{ detalle_post.contenido | safe }}
 {% endblock contenido %}

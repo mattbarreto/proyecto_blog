@@ -61,16 +61,18 @@
         </header>
     {% block contenido %}
 
+{% comment %} arranca la barra {% endcomment %}
+{% block barra_busqueda %} 
 <div class ="container">
     <div class = "row">
         <div class="col-md-12 search">
             <form method="get">
-                <div id ="custom-search-imput">
-                    <div class="imput-group col-md-12">
-                        <input type="text" class="form-control" placeholder="Buscar..." name="buscar">
-                        <span class="imput-group-list">
+                <div id ="custom-search-input">
+                    <div class="input-group col-md-12">
+                        <input type="text" class="form-control" placeholder="Buscar..." name="buscar" value = "{{ request.GET.buscar }}">
+                        <span class="input-group-list">
                             <i class="icon icon-search"></i>
-                            <button type="submit" class="boton btn-succes">Buscar</button>
+                            <button type="submit" class="boton btn-success">Buscar</button>
                         </span>
                     </div>
                 </div>
@@ -78,6 +80,8 @@
         </div>
     </div>
 </div>
+{% endblock barra_busqueda %}
+{% comment %} termina la barra {% endcomment %}
 
         <!-- Main Content-->
         <div class="container px-4 px-lg-5">
@@ -87,7 +91,7 @@
                     {% if post %}
                         {% for p in post %}
                             <div class="post-preview">
-                                <a href="href="{% url 'app_blog:detalle_post' post.slug %}">  
+                                {% comment %} <a href="href="{% url 'app_blog:detalle_post' post.slug %}">   {% endcomment %}
                                 <h2 class="post-title">{{p.titulo}}</h2>
                                 <h3 class="post-subtitle">{{p.descripcion}}</h3>
                                 </a>
