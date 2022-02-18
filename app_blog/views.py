@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from app_blog.forms import AvatarFormulario
 from app_blog.models import Avatar, Categoria, Post
 from django.db.models import Q
@@ -43,10 +43,6 @@ def agregar_avatar(request):
 def blog(request):
     post = Post.objects.all()
     return render(request, 'post.html', {'post': post})
-
-# def category(request, categoy_id):
-#     category = get_object_or_404(Categoria, id=categoy_id)
-#     return render(request, 'categoria.html', {'category': category})
 
 def about(request):
     return render(request, 'about.html')

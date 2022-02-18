@@ -24,7 +24,7 @@ def login_request(request):
             else:
                 return render(request, "login.html",
                     {'form': form,
-                     'error': 'Los datos ingresados no son válidos'})
+                    'error': 'Los datos ingresados no son válidos'})
             
         else:
                 return render(request, "login.html", {'form': form})
