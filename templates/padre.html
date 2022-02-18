@@ -76,36 +76,38 @@
 {% comment %} termina la barra {% endcomment %}
 <br>
 <br>
-{% block contenido %}
+
         <!-- Main Content-->
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
-                <!-- Post preview-->
-                {% if post %}
-                    {% for p in post %}
-                        <div class="post-preview">
-                                <a href="{% url 'index' %}}"></a>
+                    {% block contenido %}
+                    <!-- Post preview-->
+                    {% if post %}
+                        {% for p in post %}
+                            <div class="post-preview">
+                                <a href="post.html"></a>
                                     <h2 class="post-title">{{p.titulo}}</h2>
                                     <h3 class="post-subtitle">{{p.descripcion}}</h3>
                                 </a>
-                                <p class="post-meta">
-                                    <a href="#!">{{p.autor}}</a>
-                                    {{p.fecha_creacion}}
+                                <p class="post-meta"> 
+                                    {{p.autor}}
+                                    Publicado el: {{p.fecha_creacion}}
                                 </p>
                             </div>
-                                <!-- Divider-->
+                            <!-- Divider-->
                             <hr class="my-4" />
-                    {% endfor %}
-                {% else %}
-                    <h3>No existen posteos registrados en esta categoria.</h3>
-                {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <h3>No existen posteos registrados en esta categoria.</h3>
+                    {% endif %}
+                    {% endblock contenido %}
                     <!-- Pager-->
                 <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Posts Anteriores →</a></div>
+            
                 </div>
             </div>
         </div>
-{% endblock contenido %}
         <!-- Footer-->
         <footer class="border-top">
             <div class="container px-4 px-lg-5">

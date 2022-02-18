@@ -1,0 +1,26 @@
+{% extends 'padre.html' %}
+{% load static %}
+
+{% block titulo %}
+    {{detalle_post.titulo}}
+{% endblock titulo%}
+
+{% block imagen_header %}
+
+{% comment %} {% static 'app_blog/assets/img/home-bg.jpg' %} {% endcomment %}
+    {{detalle_post.imagen}}
+
+{% endblock imagen_header %}
+
+{% block titulo_principal %}
+    <h1>{{ detalle_post.titulo }}</h1>
+    <p>{{ detalle_post.descripcion }}</p>
+    <p>Escrito por:{{ detalle_post.autor }}</p>
+{% endblock titulo_principal %}
+
+{% block barra_busqueda %}
+{% endblock barra_busqueda %}
+
+{% block contenido %}
+    {{ detalle_post.contenido | safe }}
+{% endblock contenido %}
