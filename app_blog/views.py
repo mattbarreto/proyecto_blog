@@ -100,8 +100,9 @@ def saludable(request):
     return render(request, 'saludable.html', {'avatar_url': avatar_url,'post': post})
         
 
-def leer(request, post):
-    return render(request, 'post.html', {'post': Post.objects.all()})
+def leer(request, titulo):
+    post = Post.objets.get(titulo = titulo)
+    return render(request, 'post.html', {'leer': post})
 
 def about(request):
     return render(request, 'about.html')
