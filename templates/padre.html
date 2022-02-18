@@ -39,8 +39,8 @@
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'nutricion' %}">Nutricion</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'saludable' %}">Tips saludables</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'contacto' %}">Contacto</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"> Usuario: {{user.username}}</a></li>
-                        <li><img src="{{avatar_url}}"height= "50px"/></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'editar_perfil' %}"> Usuario: {{user.username}}</a></li>
+                        <li> <a href="{% url 'avatar_add' %}"><img src="{{avatar_url}}"height= "50px"/> </a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'logout' %}">Salir de la sesión</a></li>
                     </ul>
                 </div>
@@ -59,6 +59,27 @@
                 </div>
             </div>
         </header>
+{% comment %} arranca la barra {% endcomment %}
+{% block barra_busqueda %}
+<div class ="container">
+    <div class = "row">
+        <div class="col-md-12 search">
+            <form method="get">
+                <div id ="custom-search-input">
+                    <div class="input-group col-md-12">
+                        <input type="text" class="form-control" placeholder="Buscar..." name="buscar" value = "{{ request.GET.buscar }}">
+                        <span class="input-group-list">
+                            <i class="icon icon-search"></i>
+                            <button type="submit" class="boton btn-success">Buscar</button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock barra_busqueda %}
+{% comment %} termina la barra {% endcomment %}
         <!-- Main Content-->
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">

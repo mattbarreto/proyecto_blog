@@ -1,13 +1,18 @@
 from django.shortcuts import render, redirect
 from app_blog.forms import AvatarFormulario
 from app_blog.models import Avatar, Categoria, Post
+from django.db.models import Q
 
 # Create your views here.
 
 def home(request):
-
+    queryset = request.GET.get("buscar") 
     post = Post.objects.filter(estado = True)
-    
+    if queryset:
+        post = Post.objects.filter(
+            Q(titulo__icontains = queryset) |
+            Q(descripcion__icontains = queryset)
+        ).distinct()
     avatares = Avatar.objects.filter(user=request.user.id)
     if avatares:
         avatar_url = avatares.last().imagen.url
@@ -30,19 +35,70 @@ def agregar_avatar(request):
     return render(request, 'crear_avatar.html', {'form': formulario})
 
 def nutricion(request):
+    queryset = request.GET.get("buscar")
     post = Post.objects.filter(
         estado=True, 
-        categoria=Categoria.objects.get(nombre__iexact='Nutricion')
+        categoria = Categoria.objects.get(nombre__iexact = 'Nutricion')
     )
-    return render(request, 'nutricion.html', {'post':post})
+    if queryset:
+        post = Post.objects.filter(
+            Q(titulo__icontains = queryset) |
+            Q(descripcion__icontains = queryset),
+            estado=True, 
+            categoria = Categoria.objects.get(nombre__iexact = 'Nutricion')
+        ).distinct()
+        
+    avatares = Avatar.objects.filter(user=request.user.id)
+    if avatares:
+        avatar_url = avatares.last().imagen.url
+    else:
+        avatar_url = ''
+    return render(request, 'nutricion.html', {'avatar_url': avatar_url,'post':post})
 
 def rutinas(request):
-    post = Post.objects.filter(estado=True, categoria=Categoria.objects.get(nombre__iexact='Rutinas'))
-    return render(request, 'rutinas.html', {'post': post})
+    queryset = request.GET.get("buscar")
+    post = Post.objects.filter(
+        estado=True, 
+        categoria=Categoria.objects.get(nombre__iexact='Rutinas')
+    )
+    if queryset:
+        post = Post.objects.filter(
+            Q(titulo__icontains = queryset) |
+            Q(descripcion__icontains = queryset),
+            estado=True, 
+            categoria = Categoria.objects.get(nombre__iexact = 'Rutinas')
+        ).distinct()
+        
+    avatares = Avatar.objects.filter(user=request.user.id)
+    if avatares:
+        avatar_url = avatares.last().imagen.url
+    else:
+        avatar_url = ''
+    
+    return render(request, 'rutinas.html', {'avatar_url': avatar_url,'post': post})
+
 
 def saludable(request):
-    post = Post.objects.filter(estado=True, categoria=Categoria.objects.get(nombre__iexact='Saludable'))
-    return render(request, 'saludable.html', {'post': post})
+    queryset = request.GET.get("buscar")
+    post = Post.objects.filter(
+        estado=True, 
+        categoria=Categoria.objects.get(nombre__iexact='Saludable')
+        )
+    if queryset:
+        post = Post.objects.filter(
+            Q(titulo__icontains = queryset) |
+            Q(descripcion__icontains = queryset),
+            estado=True, 
+            categoria = Categoria.objects.get(nombre__iexact = 'Saludable')
+        ).distinct()
+    
+    avatares = Avatar.objects.filter(user=request.user.id)
+    if avatares:
+        avatar_url = avatares.last().imagen.url
+    else:
+        avatar_url = ''   
+    return render(request, 'saludable.html', {'avatar_url': avatar_url,'post': post})
+        
 
 def leer(request, post):
     return render(request, 'post.html', {'post': Post.objects.all()})
