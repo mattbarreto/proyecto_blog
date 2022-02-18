@@ -7,7 +7,6 @@ from proyecto_blog.forms import UserEditForm, UserRegisterForm
 
 # LogIn/LogOut
 
-
 def login_request(request):
     
     if request.method == "POST":
@@ -24,7 +23,7 @@ def login_request(request):
             else:
                 return render(request, "login.html",
                     {'form': form,
-                     'error': 'Los datos ingresados no son válidos'})
+                    'error': 'Los datos ingresados no son válidos'})
             
         else:
                 return render(request, "login.html", {'form': form})
