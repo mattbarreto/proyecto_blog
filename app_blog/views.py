@@ -12,7 +12,7 @@ def home(request):
     if avatares:
         avatar_url = avatares.last().imagen.url
     else:
-        avatar_url = ''
+        avatar_url = "agregar imagen"
     return render(request, 'index.html', {'avatar_url': avatar_url, 'post': post})
 
 # Avatar
