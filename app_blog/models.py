@@ -8,7 +8,6 @@ from django.urls import reverse_lazy
 from django.db.models import Model, ForeignKey, ImageField, CASCADE
 # from django.db.models.fields import CharField
 
-
 # Create your models here.
 
 class Categoria(Model):

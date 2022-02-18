@@ -33,10 +33,6 @@ def blog(request):
     post = Post.objects.all()
     return render(request, 'post.html', {'post': post})
 
-# def category(request, categoy_id):
-#     category = get_object_or_404(Categoria, id=categoy_id)
-#     return render(request, 'categoria.html', {'category': category})
-
 def about(request):
     return render(request, 'about.html')
 
@@ -57,5 +53,3 @@ def rutinas(request):
 def saludable(request):
     post = Post.objects.filter(estado=True, categoria=Categoria.objects.get(nombre='Saludable'))
     return render(request, 'saludable.html', {'post': post})
-
-
