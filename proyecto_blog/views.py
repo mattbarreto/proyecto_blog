@@ -7,7 +7,6 @@ from proyecto_blog.forms import UserEditForm, UserRegisterForm
 
 # LogIn/LogOut
 
-
 def login_request(request):
     
     if request.method == "POST":

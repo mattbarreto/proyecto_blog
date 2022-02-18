@@ -22,9 +22,9 @@ def home(request):
         avatar_url = ''
     return render(request, 'index.html', {'avatar_url': avatar_url, 'post': post})
 
-def detallePost(request,slug):
-    post = get_object_or_404(Post,slug = slug)
-    return render(request, 'post.html', {'detalle_post':post})
+# def detallePost(request,slug):
+#     post = get_object_or_404(Post,slug = slug)
+#     return render(request, 'post.html', {'detalle_post':post})
 
 # Avatar
 def agregar_avatar(request):
@@ -48,7 +48,7 @@ def about(request):
     return render(request, 'about.html')
 
 def contacto(request):
-    return render(request, 'contact.html')
+    return render(request, 'contacto.html')
 
 def nutricion(request):
     queryset = request.GET.get("buscar")
