@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from app_blog.forms import AvatarFormulario
 from app_blog.models import Avatar, Categoria, Post
 from django.db.models import Q
@@ -7,7 +7,7 @@ from django.db.models import Q
 
 def home(request):
     queryset = request.GET.get("buscar")
-         
+
     post = Post.objects.filter(estado = True)
     if queryset:
         post = Post.objects.filter(
@@ -96,5 +96,3 @@ def saludable(request):
         ).distinct()
         
     return render(request, 'saludable.html', {'post': post})
-
-
