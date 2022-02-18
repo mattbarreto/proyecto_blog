@@ -66,15 +66,6 @@ class Comentario(Model):
 
     def __str__(self):
         return self.user.username
-
-class PostView(Model):
-    # user = models.ForeignKey()
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    fecha = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.user.username
-
 class Avatar(Model):
     user = ForeignKey(User, on_delete=CASCADE)
     imagen = ImageField(upload_to= 'avatares', null=True, blank= True)
