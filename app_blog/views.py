@@ -44,9 +44,8 @@ def saludable(request):
     post = Post.objects.filter(estado=True, categoria=Categoria.objects.get(nombre__iexact='Saludable'))
     return render(request, 'saludable.html', {'post': post})
 
-def leer(request):
-    post = Post.objects.filter(estado = True)
-    return render(request, 'post.html', {'post':post})
+def leer(request, post):
+    return render(request, 'post.html', {'post': Post.objects.all()})
 
 def about(request):
     return render(request, 'about.html')
