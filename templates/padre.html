@@ -45,7 +45,7 @@
             </div>
         </nav>
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url({% block imagen_header %}{% static 'app_blog/assets/img/home-bg.jpg' %}{% endblock imagen_header %})">
+        <header class="masthead" style="background-image: url({% block imagen_header %}{% static 'app_blog/assets/img/index.jpg' %}{% endblock imagen_header %})">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
@@ -80,12 +80,19 @@
 {% comment %} termina la barra {% endcomment %}
 <br>
 <br>
+<<<<<<< HEAD
 
+=======
+>>>>>>> Previo_Funcional
         <!-- Main Content-->
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
+<<<<<<< HEAD
                     {% block contenido %}
+=======
+{% block contenido %}
+>>>>>>> Previo_Funcional
                     <!-- Post preview-->
                     {% if post %}
                         {% for p in post %}
@@ -94,9 +101,16 @@
                                     <h2 class="post-title">{{p.titulo}}</h2>
                                     <h3 class="post-subtitle">{{p.descripcion}}</h3>
                                 </a>
+<<<<<<< HEAD
                                 <p class="post-meta"> 
                                     {{p.autor}}
                                     Publicado el: {{p.fecha_creacion}}
+=======
+                                <p class="post-meta">
+                                <a href="#!">{{p.autor}}</a>
+                                <br>
+                                Publicado el {{p.fecha_creacion}}
+>>>>>>> Previo_Funcional
                                 </p>
                             </div>
                             <!-- Divider-->
@@ -107,19 +121,36 @@
                     {% endif %}
                     {% endblock contenido %}
                     <!-- Pager-->
+<<<<<<< HEAD
                     {% block boton %}
+=======
+<<<<<<< HEAD
+>>>>>>> 4e7be99975f2592d9b2ff33718af15fbcf5b7f8e
                 <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Posts Anteriores →</a></div>
                     {% endblock boton %}
                 </div>
             </div>
         </div> 
+=======
+{% endblock contenido %}
+                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Posts anteriores →</a></div>
+                </div>
+            </div>
+        </div>
+
+>>>>>>> Previo_Funcional
         <!-- Footer-->
         <footer class="border-top">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
+<<<<<<< HEAD
                         <ul class="list-inline text-center">
                             <!-- <li class="list-inline-item">
+=======
+                        <!-- <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+>>>>>>> Previo_Funcional
                                 <a href="#!">
                                     <span class="fa-stack fa-lg">
                                         <i class="fas fa-circle fa-stack-2x"></i>
@@ -142,9 +173,17 @@
                                         <i class="fab fa-github fa-stack-1x fa-inverse"></i>
                                     </span>
                                 </a>
+<<<<<<< HEAD
                             </li> -->
                         </ul>
                         <div class="small text-center text-muted fst-italic">Barreto, Del Negro, Alonso 2022.<br>Proyecto Final CoderHouse.</div>
+=======
+                            </li>
+                        </ul> -->
+                        <div class="small text-center text-muted fst-italic">Proyecto Final CoderHouse 2022.<br>
+                            Barreto, Del Negro, Alonso.
+                        </div>
+>>>>>>> Previo_Funcional
                     </div>
                 </div>
             </div>
