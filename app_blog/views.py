@@ -1,5 +1,10 @@
+from django.forms import model_to_dict
 from http.client import HTTPResponse
 from django.shortcuts import render, redirect
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 from app_blog.forms import AvatarFormulario
 from app_blog.models import Avatar, Categoria, Post
 from django.db.models import Q
@@ -70,7 +75,7 @@ def nutricion(request):
         avatar_url = avatares.last().imagen.url
     else:
         avatar_url = ''
-    return render(request, 'nutricion.html', {'avatar_url': avatar_url,'post':post})
+    return render(request, 'nutri.html', {'avatar_url': avatar_url,'post':post})
 
 def rutinas(request):
     queryset = request.GET.get("buscar")
@@ -110,11 +115,11 @@ def saludable(request):
         avatar_url = avatares.last().imagen.url
     else:
         avatar_url = ''  
-    return render(request, 'saludable.html', {'avatar_url': avatar_url,'post': post})
+    return render(request, 'tips.html', {'avatar_url': avatar_url,'post': post})
 
-def leer(request, titulo):
+""" def leer(request, titulo):
     post = Post.objets.get(titulo = titulo)
-    return render(request, 'post.html', {'leer': post})
+    return render(request, 'post.html', {'leer': post}) """
 
 def about(request):
     return render(request, 'about.html')

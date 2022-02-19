@@ -1,13 +1,13 @@
 {% extends "padre.html" %}
 {% load static %}
 
-{% block titulo %}Rutinas{% endblock titulo %}
+{% block titulo %}Tips Saludables {% endblock titulo %}
 
-{% block titulos_secciones %}<h2>Rutinas</h2>{% endblock titulos_secciones %}
+{% block titulos_secciones %} <h2> Tips Saludables </h2>{% endblock titulos_secciones %}
 
-{% block subtitulo %} Creacion de habitos, creacion de nuevos circuitos neuronales {% endblock subtitulo %}
+{% block subtitulo %} El movimiento te mantedra saludable {% endblock subtitulo %}
 
-{% block imagen_header %}{% static 'app_blog/assets/img/rutinas.jpg' %}{% endblock imagen_header %}
+{% block imagen_header %}{% static 'app_blog/assets/img/tips.jpg' %}{% endblock imagen_header %}
 
 {% block contenido %}
 
@@ -38,5 +38,6 @@
 {% endblock contenido%}
 
 {% block boton %}
-<div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{% url 'index' %}">Inicio</a></div>
+<div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{% url 'index' %}">Inicio
+        →</a></div>
 {% endblock boton %}

@@ -5,50 +5,42 @@
     {% block titulo %} Busqueda {% endblock titulo%}
 
 
-{% block imagen_header %}
+{% block imagen_header %}{% static 'app_blog/assets/img/child.jpg' %}{% endblock imagen_header %}
 
-{{poste.imagen}}
-
-{% endblock imagen_header %}
-
-{% block titulos_secciones %} <p> Estas buscando: </p> {% endblock titulos_secciones %} 
+{% block comment %}{{poste.imagen}}{% endblock comment %}
 
 
-{% block subtitulo %} 
+{% block titulos_secciones %} <h2> Estas buscando: </h2> {% endblock titulos_secciones %} 
 
-<h2>  <strong> <font style="color:yellow"> {{query}} </strong> </h2>
+{% block subtitulo %} <h3 font style="color:royalblue"> "{{query}}"</h3> {% endblock subtitulo %}
 
-{% endblock subtitulo %}
-
-
-{% block contenido%}
+{% block contenido %}
 
 {% if poste %}
-<font style="color:black">
-    <p> Posteos encontrados: {{poste|length}} </p>
+
+<h5 font style="color:grey;font-family: Arial, Helvetica, sans-serif; text-align: left; margin-left: 30px;"> Posteos encontrados: {{poste|length}} </h5>
+<br>
+<br>   
+    {% for post in poste %}
+    
     <ul>
-
-        {% for post in poste %}
-        <li>
-            
-        
-            <p>{{ poste.descripcion | safe }}</p>
-            
-            <p>{{post.contenido | safe }}</p>
-            
-            
-
-        </li>
-        {% endfor %}
+        <div>
+            <h2>{{post.titulo | safe }}</h2>
+            <h3>{{post.descripcion | safe }}</h3>
+            <p font-style="color: gray; font-size: 10 px">{{post.autor | safe }}</p>
+            <p font-size="12 px;">{{post.contenido | safe }}</p>
+        </div>
     </ul>
-{% else %}
-<p>No existe el posteo solicitado</p>
+    {% endfor %}
+
+    {% else %}
+
+    <p>No existe el posteo solicitado</p>
 
 {% endif %}
+
 {% endblock contenido%}
 
 {% block boton %}
 <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{% url 'index' %}">Inicio →</a></div> 
 {% endblock boton %}
-
-

@@ -1,0 +1,45 @@
+{% extends 'padre.html' %}
+{% load static %}
+
+{% block titulo %} Busqueda {% endblock titulo%}
+
+{% block imagen_header %}
+
+{% static 'app_blog/assets/img/nutricion.jpg' %}
+
+{% endblock imagen_header %}
+
+{% block titulos_secciones %} <h2> Nutricion </h2> {% endblock titulos_secciones %}
+
+{% block subtitulo %} Alimentacion saludable incluye una buena dieta cognitiva {% endblock subtitulo %}
+
+{% block contenido %}
+
+{% if post %}
+
+<p font style="color:rgba(20, 20, 20, 0.849);font-family: 'Courier New', Courier, monospace; text-align: left; margin-left: 30px; font-size: medium;"> Posteos publicados en esta sección: {{post|length}} </p>
+<br>
+{% for p in post %}
+
+<ul>
+    <div>
+        <h2>{{p.titulo | safe }}</h2>
+        <h3>{{p.descripcion | safe }}</h3>
+        <p font-style="color: gray; font-size: 10 px">{{p.autor | safe }}</p>
+        <p font-size="12 px;">{{p.contenido | safe }}</p>
+    </div>
+</ul>
+{% endfor %}
+
+{% else %}
+
+<p>No existe el posteo solicitado</p>
+
+{% endif %}
+
+{% endblock contenido%}
+
+{% block boton %}
+<div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{% url 'index' %}">Inicio
+        →</a></div>
+{% endblock boton %}

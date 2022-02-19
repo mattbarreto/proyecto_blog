@@ -1,14 +1,12 @@
 {% extends "padre.html" %}
 {% load static %}
-{% block titulo %}
-Tips Saludables
-{% endblock titulo %}
-{% block titulos_secciones %}
-Tips Saludables
-{% endblock titulos_secciones %}
-{% block imagen_header %}
-    {% static 'app_blog/assets/img/tips.jpg' %}
-{% endblock imagen_header %}
+
+{% block titulo %}Tips Saludables {% endblock titulo %}
+
+{% block titulos_secciones %}Tips Saludables{% endblock titulos_secciones %}
+
+{% block imagen_header %}{% static 'app_blog/assets/img/tips.jpg' %}{% endblock imagen_header %}
+
 {% block boton %}
-<div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{% url 'index' %}">Inicio →</a></div> 
+<div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{% url 'index' %}">Inicio</a></div> 
 {% endblock boton %}

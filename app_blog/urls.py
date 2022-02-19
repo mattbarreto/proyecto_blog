@@ -1,8 +1,9 @@
 from unicodedata import name
 from django.urls import path
-from .views import agregar_avatar, home, about, contacto, nutricion, rutinas, saludable, leer
+from .views import agregar_avatar, home, about, contacto, nutricion, rutinas, saludable
 from django.contrib.auth.decorators import login_required
 from .views import *
+
 urlpatterns = [
     path('user/avatar/add', login_required(agregar_avatar), name='avatar_add'),
     path('', home, name = 'index'),
@@ -14,6 +15,4 @@ urlpatterns = [
     
     path('post/buscar', login_required(post_busqueda), name='Busqueda de Posteos'),
     path('buscar_post', login_required(buscar_post), name='Buscar Posts'),
-    
-    
 ]
