@@ -7,11 +7,8 @@ Tips Saludables
 Tips Saludables
 {% endblock titulos_secciones %}
 {% block imagen_header %}
-<<<<<<< HEAD
     {% static 'app_blog/assets/img/tips.jpg' %}
-=======
-
-    {% static 'app_blog/assets/img/tips.jpg' %}
-
->>>>>>> 4e7be99975f2592d9b2ff33718af15fbcf5b7f8e
 {% endblock imagen_header %}
+{% block boton %}
+<div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{% url 'index' %}">Inicio →</a></div> 
+{% endblock boton %}
