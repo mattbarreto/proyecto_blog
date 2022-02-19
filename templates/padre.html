@@ -34,7 +34,11 @@
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'saludable' %}">Tips saludables</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'contacto' %}">Contacto</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'editar_perfil' %}">Usuario: {{user.username}}</a></li> 
+                        {% if avatar_url == '' %}
+                        <li> <a href="{% url 'avatar_add' %}"><img src="{% static 'app_blog\assets\img\anonimo01.jpg' %}"height= "50px"/> </a></li>
+                        {% else %}
                         <li> <a href="{% url 'avatar_add' %}"><img src="{{avatar_url}}"height= "50px"/> </a></li>
+                        {% endif %}
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'logout' %}">Salir de la sesión</a></li>
                     </ul>
                 </div>
