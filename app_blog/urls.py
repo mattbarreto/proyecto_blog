@@ -12,8 +12,8 @@ urlpatterns = [
     path('rutinas', login_required(rutinas), name='rutinas'),
     path('saludable', login_required(saludable), name='saludable'),
     
-    path('rutinas/buscar', login_required(post_busqueda), name='Busqueda de Rutinas'),
-    path('buscar_rutina', login_required(buscar_post), name='Buscar Rutinas'),
+    path('post/buscar', login_required(post_busqueda), name='Busqueda de Posteos'),
+    path('buscar_post', login_required(buscar_post), name='Buscar Posts'),
     
     
 ]
