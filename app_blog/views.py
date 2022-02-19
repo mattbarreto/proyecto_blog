@@ -30,9 +30,10 @@ def home(request):
     if queryset:
         post = Post.objects.filter(
             Q(titulo__icontains = queryset) |
-            Q(descripcion__icontains = queryset)
+            Q(categoria__icontains = queryset) |
+            Q(autor__icontains=queryset)
         ).distinct()
-        return render(request, "post.html", {"poste": post, "query": queryset})
+        return render(request, "posteos.html", {"poste": post, "query": queryset})
     avatares = Avatar.objects.filter(user=request.user.id)
     if avatares:
         avatar_url = avatares.last().imagen.url
@@ -40,32 +41,6 @@ def home(request):
         avatar_url = ''
     return render(request, 'index.html', {'avatar_url': avatar_url, 'post': post})
     
-  
-  
-    if request.GET["pos"]:
-        posteo = request.GET["pos"]
-        poste = Post.objects.filter(titulo__icontains=posteo)
-        return render(request, "post.html", {"poste": poste, "query": posteo})
-    else:
-        mensaje = "Por favor, introduzca un nombre para comenzar la búsqueda"
-    return HTTPResponse(mensaje)
-    
-  
-  
-  
-  
-  
-  
-  
-    avatares = Avatar.objects.filter(user=request.user.id)
-    if avatares:
-        avatar_url = avatares.last().imagen.url
-    else:
-        avatar_url = ''
-    return render(request, 'index.html', {'avatar_url': avatar_url, 'post': post})
-
-
-
 # Avatar
 def agregar_avatar(request):
     if request.method == 'POST':
@@ -148,15 +123,9 @@ def about(request):
 def contacto(request):
     return render(request, 'contact.html')
 
-
-
-
 def post_busqueda(request):
 
     return render(request, 'rutinas_busqueda.html')
-
-
-
 
 def buscar_post(request):
     if request.GET["pos"]:

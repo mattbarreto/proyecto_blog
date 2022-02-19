@@ -18,24 +18,25 @@
 
 {% endblock imagen_header %}
 
-<body>
 
 {% block titulo_principal %}
-<h1>{{ poste.titulo }}</h1>
-<p>{{ poste.descripcion }}</p>
-<p>Escrito por:{{ poste.autor }}</p>
+
+<p>Estás buscando: <strong>{{query}} </strong> </p>
+
 {% endblock titulo_principal %}
 
-    <p>Estás buscando: <strong>{{query}} </strong> </p>
-{% if poste%}
+{% block contenido%}
+
+{% if poste %}
 
     <p>Posteos encontrados: {{poste|length}} </p>
     <ul>
 
         {% for post in poste %}
         <li>
-            <p>Título {{post.titulo}}</p>
-            <p>Descripción: {{post.descripcion}}</p>
+            <h1>{{ poste.titulo }}</h1>
+            <p>{{ poste.descripcion }}</p>
+            <p>Escrito por:{{ poste.autor }}</p>
             <p>{{post.contenido | safe }}</p>
             
 
@@ -45,12 +46,9 @@
     </ul>
 {% else %}
 <p>No existe el posteo solicitado</p>
+
 <a href="{% url 'index' %}">Volver al Inicio</a>
 
 {% endif %}
 
-
-
-</body>
-
-</html>
+{% endblock contenido%}
