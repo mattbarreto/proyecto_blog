@@ -4,6 +4,7 @@
 {% extends 'padre.html' %}
 {% load static %}
 
+<<<<<<< HEAD
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +14,16 @@
 
 {% block imagen_header %}
 
+=======
+{% block titulo %}
+    {{leer.titulo}}
+{% endblock titulo%}
+
+{% block imagen_header %}
+
+{{leer.imagen}}
+
+>>>>>>> Previo_Funcional
 {% comment %} {% static 'app_blog/assets/img/home-bg.jpg' %} {% endcomment %}
 {{detalle_post.imagen}}
 
@@ -21,6 +32,7 @@
 <body>
 
 {% block titulo_principal %}
+<<<<<<< HEAD
 <h1>{{ poste.titulo }}</h1>
 <p>{{ poste.descripcion }}</p>
 <p>Escrito por:{{ poste.autor }}</p>
@@ -54,3 +66,13 @@
 </body>
 
 </html>
+=======
+    <h1>{{leer.titulo}}</h1>
+    <p>{{leer.descripcion}}</p>
+    <p>{{leer.autor}}</p>
+{% endblock titulo_principal %}
+
+{% block contenido %}
+    {{leer.contenido | safe}}
+{% endblock contenido %}
+>>>>>>> Previo_Funcional
