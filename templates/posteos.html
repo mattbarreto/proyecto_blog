@@ -13,17 +13,16 @@
 
 {% block imagen_header %}
 
-{% comment %} {% static 'app_blog/assets/img/home-bg.jpg' %} {% endcomment %}
-{{detalle_post.imagen}}
+{{poste.imagen}}
 
 {% endblock imagen_header %}
 
 
-{% block titulo_principal %}
+{% block titulo_principal %} {% endblock titulo_principal %}
 
 <p>Estás buscando: <strong>{{query}} </strong> </p>
 
-{% endblock titulo_principal %}
+
 
 {% block contenido%}
 

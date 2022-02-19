@@ -30,8 +30,7 @@ def home(request):
     if queryset:
         post = Post.objects.filter(
             Q(titulo__icontains = queryset) |
-            Q(categoria__icontains = queryset) |
-            Q(autor__icontains=queryset)
+            Q(slug__icontains=queryset)
         ).distinct()
         return render(request, "posteos.html", {"poste": post, "query": queryset})
     avatares = Avatar.objects.filter(user=request.user.id)
