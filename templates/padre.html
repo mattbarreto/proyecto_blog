@@ -51,7 +51,7 @@
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="site-heading">
                             <h1>{% block titulos_secciones %}Nuevo Blog{% endblock titulos_secciones %}</h1>
-                            <span class="subheading">Un blog dedicado a los deportes</span>
+                            {% block subtitulo %}<span class="subheading">Un blog dedicado a los deportes</span>{% endblock subtitulo %}
                         </div>
                     </div>
                 </div>
@@ -107,8 +107,9 @@
                     {% endif %}
                     {% endblock contenido %}
                     <!-- Pager-->
+                    {% block boton %}
                 <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Posts Anteriores →</a></div>
-            
+                    {% endblock boton %}
                 </div>
             </div>
         </div> 

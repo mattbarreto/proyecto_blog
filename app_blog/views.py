@@ -30,7 +30,7 @@ def home(request):
     if queryset:
         post = Post.objects.filter(
             Q(titulo__icontains = queryset) |
-            Q(slug__icontains=queryset)
+            Q(descripcion__icontains=queryset)
         ).distinct()
         return render(request, "posteos.html", {"poste": post, "query": queryset})
     avatares = Avatar.objects.filter(user=request.user.id)
@@ -120,7 +120,7 @@ def about(request):
     return render(request, 'about.html')
 
 def contacto(request):
-    return render(request, 'contact.html')
+    return render(request, 'contacto.html')
 
 def post_busqueda(request):
 
