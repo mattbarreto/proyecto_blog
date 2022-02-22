@@ -1,3 +1,5 @@
+from dataclasses import fields
+from pyexpat import model
 from django.forms import model_to_dict
 from http.client import HTTPResponse
 from django.shortcuts import render, redirect
@@ -5,28 +7,10 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from app_blog.forms import AvatarFormulario
+from app_blog.forms import AvatarFormulario, Post_Create
 from app_blog.models import Avatar, Categoria, Post
 from django.db.models import Q
 # Create your views here.
-
-# def home(request):
-#     queryset = request.GET.get("buscar")
-#     post = Post.objects.filter(estado = True)
-#     if queryset:
-#         post = Post.objects.filter(
-#             Q(titulo__icontains = queryset) |
-#             Q(descripcion__icontains = queryset)
-#         ).distinct()
-    
-#     avatares = Avatar.objects.filter(user=request.user.id)
-#     if avatares:
-#         avatar_url = avatares.last().imagen.url
-#     else:
-#         avatar_url = ''
-#     return render(request, 'index.html', {'avatar_url': avatar_url, 'post': post})
-
-
 
 def home(request):
     post = Post.objects.filter(estado = True)
@@ -139,4 +123,32 @@ def buscar_post(request):
     else:
         mensaje = "Por favor, introduzca un nombre para comenzar la búsqueda"
     return HTTPResponse(mensaje)
-    
+
+def crear_posteo(request):
+    if request.method=='POST':
+        posteo_form = Post_Create(request.POST)
+
+        if posteo_form.is_valid():
+            data = posteo_form.cleaned_data
+
+            Post.objects.create(
+                titulo=data['titulo'],
+                autor=data['autor'],
+                categoria=data['categoria'],
+                descripcion=data['descripcion'],
+                contenido=data['contenido'],
+                slug=data['slug'],
+                estado=data['estado']
+                # fecha_creacion=data['fecha_creacion']
+                )
+            return redirect('Busqueda de Posteos')
+        else:
+            posteo_form = Post_Create()
+
+        return render(request, 'post_crate_form.html', {'formulario_post': posteo_form})
+
+class postCreateView(CreateView):
+    model = Post
+    success_url = reverse_lazy('Busqueda de Posteos')
+    fields = ['titulo', 'autor', 'categoria', 'descripcion', 'contenido', 'slug', 'estado']
+    template_name = 'post_create_form.html'

@@ -1,0 +1,32 @@
+{% extends "padre.html" %}
+{% load static %}
+
+{% block titulo %}Crear Post{% endblock titulo %}
+
+{% block nav_bar %} {% endblock nav_bar %}
+
+{% block header %} {% endblock header %}
+
+{% block barra_busqueda %} {% endblock barra_busqueda %}
+
+{% block contenido %}
+
+    {% if form.errors %}
+    <p style="color: red;">{{form.errors}}
+    {% endif %}
+
+<form action="" method="POST">{% csrf_token %}
+
+    <table>
+        {{posteo_form.as_p}}
+    </table>
+
+    <input type="submit" value="Crear">
+
+</form>
+
+{% endblock contenido %}
+
+{% block boton %} {% endblock boton %}
+
+{% block footer %} {% endblock footer %}
