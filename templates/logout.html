@@ -1,13 +1,23 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log Out</title>
-</head>
-<body>
-    <h3>Gracias por visitarnos!</h3>
-    <a href="{% url 'Login' %}">Iniciar sesión nuevamente</a>
-</body>
-</html> 
+{% extends "padre.html" %}
+{% load static %}
+
+{% block titulo %}Volve pronto{% endblock titulo %}
+
+{% block nav_bar %} {% endblock nav_bar %}
+
+{% block header %} {% endblock header %}
+
+{% block barra_busqueda %} {% endblock barra_busqueda %}
+
+{% block contenido %}
+    <div align="center">
+        <h4>Esperamos que vuelvas a visitarnos!</h4>
+        <br>
+        <button><a href="{% url 'Login' %}">Iniciar sesión nuevamente</a></button>
+    </div>
+
+{% endblock contenido %}
+
+{% block boton %} {% endblock boton %}
+
+{% block footer %} {% endblock footer %}
