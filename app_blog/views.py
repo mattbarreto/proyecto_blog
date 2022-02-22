@@ -129,7 +129,7 @@ def contacto(request):
 
 def post_busqueda(request):
 
-    return render(request, 'rutinas_busqueda.html')
+    return render(request, 'post_busqueda.html')
 
 def buscar_post(request):
     if request.GET["pos"]:

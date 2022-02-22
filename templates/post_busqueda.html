@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Busqueda de Rutinas</title>
+    <title>Busqueda de Posteos</title>
 </head>
 <body>
     
     <form action="{% url 'Buscar Posts' %}" method="GET">
 
-       Nombre <input type="text" name="pos">
-       
-
+    Nombre <input type="text" name="pos">
+    
         <input type="submit" value="Buscar">
         
         <p><a href="{% url 'index' %}">Volver al Inicio</a></p>

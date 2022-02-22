@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesion</title>
-</head>
-<body>
+{% extends "padre.html" %}
+{% load static %}
+
+{% block titulo %}Inicio de Sesión{% endblock titulo %}
+
+{% block nav_bar %} {% endblock nav_bar %}
+
+{% block header %} {% endblock header %}
+
+{% block barra_busqueda %} {% endblock barra_busqueda %}
+
+{% block contenido %}
+
+  <div class="container">
     
     <form action="" method="POST">
 
@@ -14,13 +19,15 @@
       <table> 
       {{ form.as_table }}
       </table>
-
+      <br>
       <input type="submit" value="Iniciar Sesión">
+    
     </form>
+    <br>
+    <button><a href="{% url 'Registro' %}">Registrarse</a></button>
+  </div>
+{% endblock contenido %}
 
-    <a href="{% url 'Registro' %}" >Registrarse</a>
+{% block boton %} {% endblock boton %}
 
-</body>
-</html> 
-
-
+{% block footer %} {% endblock footer %}
