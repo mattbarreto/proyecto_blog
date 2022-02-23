@@ -1,0 +1,37 @@
+{% extends "padre.html" %}
+{% load static %}
+
+{% block titulo %}Borrar Post{% endblock titulo %}
+
+{% block nav_bar %} {% endblock nav_bar %}
+
+{% block header %} {% endblock header %}
+
+{% block barra_busqueda %} {% endblock barra_busqueda %}
+
+{% block contenido %}
+
+<div class="container">
+    <h3>¿Estás seguro de querer borrar el siguiente elemento:</h3>
+    <br>
+    <h4 style="color:red;">{{ object }}</h4>
+    <p style="color:black;">Creado el: {{ object.fecha_creacion }}</p>
+    <p style="color:black;">{{ object.autor }}</p>
+    <br>
+</div>
+
+<div align="right">
+<form action="" method="POST">
+
+    {% csrf_token %}
+    
+    <p font style="margin-right: 150px;"><input type="submit" value="Borrar"></p>
+
+</form>
+</div>
+
+{% endblock contenido %}
+
+{% block boton %} {% endblock boton %}
+
+{% block footer %} {% endblock footer %}

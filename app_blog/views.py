@@ -1,5 +1,10 @@
 from dataclasses import fields
+from multiprocessing import context
 from pyexpat import model
+from re import template
+from statistics import mode
+from turtle import update
+from typing import Any
 from django.forms import model_to_dict
 from http.client import HTTPResponse
 from django.shortcuts import render, redirect
@@ -138,17 +143,48 @@ def crear_posteo(request):
                 descripcion=data['descripcion'],
                 contenido=data['contenido'],
                 slug=data['slug'],
-                estado=data['estado']
-                # fecha_creacion=data['fecha_creacion']
+                estado=data['estado'],
+                #fecha_creacion=data['fecha_creacion']
                 )
-            return redirect('Busqueda de Posteos')
+            return redirect('index')
         else:
             posteo_form = Post_Create()
 
-        return render(request, 'post_crate_form.html', {'formulario_post': posteo_form})
+        return render(request, 'post_form.html', {'form': posteo_form})
 
 class postCreateView(CreateView):
     model = Post
-    success_url = reverse_lazy('Busqueda de Posteos')
-    fields = ['titulo', 'autor', 'categoria', 'descripcion', 'contenido', 'slug', 'estado']
-    template_name = 'post_create_form.html'
+    success_url = reverse_lazy('index')
+    fields = (
+        'id',
+        'titulo',
+        'autor',
+        'categoria',
+        'descripcion',
+        'contenido',
+        'imagen',
+        'slug',
+        'estado',
+        )
+    template_name = 'post_form.html'
+
+class postUpdateView(UpdateView):
+    model = Post
+    success_url = reverse_lazy('index')
+    fields = (
+        'id',
+        'titulo',
+        'autor',
+        'categoria',
+        'descripcion',
+        'contenido',
+        'imagen',
+        'slug',
+        'estado',
+        )
+    template_name = 'post_update.html'
+
+class postDeleteView(DeleteView):
+    model = Post
+    success_url = reverse_lazy('index')
+    template_name = 'post_confirm_delete.html'

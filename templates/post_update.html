@@ -1,0 +1,38 @@
+{% extends "padre.html" %}
+{% load static %}
+
+{% block titulo %}Actualizar Post{% endblock titulo %}
+
+{% block nav_bar %} {% endblock nav_bar %}
+
+{% block header %} {% endblock header %}
+
+{% block barra_busqueda %} {% endblock barra_busqueda %}
+
+{% block contenido %}
+
+{% if form.errors %}
+<p style="color: red;">{{form.errors}}
+    {% endif %}
+
+<div class="container">
+    <h3>Actualizar Post</h3>
+</div>
+
+<form action="" method="POST" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    {{form.media}}
+    {{form.as_p}}
+
+
+    <input type="submit" value="Actualizar">
+
+</form>
+
+{% endblock contenido %}
+
+{% block boton %} {% endblock boton %}
+
+{% block footer %} {% endblock footer %}

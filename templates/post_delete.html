@@ -1,7 +1,7 @@
 {% extends "padre.html" %}
 {% load static %}
 
-{% block titulo %}Crear Post{% endblock titulo %}
+{% block titulo %}Borrar post{% endblock titulo %}
 
 {% block nav_bar %} {% endblock nav_bar %}
 
@@ -11,17 +11,20 @@
 
 {% block contenido %}
 
-    {% if form.errors %}
-    <p style="color: red;">{{form.errors}}
+{% if form.errors %}
+<p style="color: red;">{{form.errors}}
     {% endif %}
 
-<form action="" method="POST">{% csrf_token %}
+<div class="container">
+    <h3>Borrar post: {{ object }}</h3>
+</div>
 
-    <table>
-        {{posteo_form.as_p}}
-    </table>
+<form action="" method="POST" enctype="multipart/form-data">
 
-    <input type="submit" value="Crear">
+    {% csrf_token %}
+
+
+    <input type="submit" value="Aceptar">
 
 </form>
 
