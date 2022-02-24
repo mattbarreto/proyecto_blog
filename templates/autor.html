@@ -1,0 +1,24 @@
+{% extends "padre.html" %}
+{% load static %}
+
+{% block titulo %}Listado de Autores{% endblock titulo %}
+
+{% block nav_bar %} {% endblock nav_bar %}
+
+{% block header %} {% endblock header %}
+
+{% block barra_busqueda %} {% endblock barra_busqueda %}
+
+{% block contenido %}
+
+<h4>Solicitaste ver los datos publicos registrados de:</h4>
+
+<ul>
+    <p>{{autor.nombre}} {{autor.apellido}} {{autor.email}} </p>
+</ul>
+
+{% endblock contenido %}
+
+{% block boton %} {% endblock boton %}
+
+{% block footer %} {% endblock footer %}

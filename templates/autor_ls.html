@@ -1,0 +1,37 @@
+
+{% extends "padre.html" %}
+{% load static %}
+
+{% block titulo %}Listado de Autores{% endblock titulo %}
+
+{% block nav_bar %} {% endblock nav_bar %}
+
+{% block header %} {% endblock header %}
+
+{% block barra_busqueda %} {% endblock barra_busqueda %}
+
+{% block contenido %}
+
+<h2>Listado de Autores registrados en nuestro sitio:</h2>
+<br>
+
+{% for autor in lista_autores %}
+
+<div style="align-items: center;">
+
+{{autor}}
+<a href="{% url 'Datos del Autor' autor.id %}" style="color: black"> <b>Ver Datos de Autor</b></a>
+<a href="{% url 'Actualizar Autor' autor.id %}" style="color: green"> <b>Actualizar Datos</b></a>
+<a href="{% url 'Borrar Autor' autor.id %}" style="color: red"><b>Borrar</b></a>
+<br>
+<br>
+
+</div>
+
+{% endfor %}
+
+{% endblock contenido %}
+
+{% block boton %} {% endblock boton %}
+
+{% block footer %} {% endblock footer %}

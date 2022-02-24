@@ -13,7 +13,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from app_blog.forms import AvatarFormulario, Post_Create
-from app_blog.models import Avatar, Categoria, Post
+from app_blog.models import Autor, Avatar, Categoria, Post
 from django.db.models import Q
 # Create your views here.
 
@@ -188,3 +188,48 @@ class postDeleteView(DeleteView):
     model = Post
     success_url = reverse_lazy('index')
     template_name = 'post_confirm_delete.html'
+
+
+def autor(request):
+
+    return render(request, 'autor_ls.html',
+                {'lista_autores': Autor.objects.all()})
+class autorCreateView(CreateView):
+    model = Autor
+    success_url = reverse_lazy('index')
+    fields = (
+        'id',
+        'nombre',
+        'apellido',
+        'twitter',
+        'web',
+        'email',
+        'estado',
+    )
+    template_name = 'autor_form.html'
+class autorListView(ListView):
+    model = Autor
+    template_name = 'autor_ls.html'
+    context_object_name = 'lista_autores'
+
+class autorDetailView(DetailView):
+    model = Autor
+    template_name = 'autor.html'
+class autorUpdateView(UpdateView):
+    model = Autor
+    success_url = reverse_lazy('index')
+    fields = (
+        'id',
+        'nombre',
+        'apellido',
+        'twitter',
+        'web',
+        'email',
+        'estado',
+    )
+    template_name = 'autor_update.html'
+
+class autorDeleteView(DeleteView):
+    model = Autor
+    success_url = reverse_lazy('index')
+    template_name = 'autor_confirm_delete.html'
