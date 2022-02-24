@@ -1,6 +1,6 @@
 from unicodedata import name
 from django.urls import path
-from .views import agregar_avatar, home, about, contacto, nutricion, rutinas, saludable, postCreateView, postDeleteView, postUpdateView, autorCreateView, autorListView, autorUpdateView, autorDeleteView, autorDetailView
+from .views import agregar_avatar,faq ,home, about, contacto, nutricion, rutinas, saludable, postCreateView, postDeleteView, postUpdateView, autorCreateView, autorListView, autorUpdateView, autorDeleteView, autorDetailView
 from django.contrib.auth.decorators import login_required
 from .views import *
 
@@ -22,6 +22,7 @@ urlpatterns = [
     path('nutricion', login_required(nutricion), name='nutricion'),
     path('rutinas', login_required(rutinas), name='rutinas'),
     path('saludable', login_required(saludable), name='saludable'),
+    path('faq', login_required(faq), name='faq'),
     
     path('post/buscar', login_required(post_busqueda), name='Busqueda de Posteos'),
     path('buscar_post', login_required(buscar_post), name='Buscar Posts'),

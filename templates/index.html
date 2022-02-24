@@ -18,9 +18,13 @@ Blog
 {% static 'app_blog/assets/img/index.jpg' %}
 
 {% endblock imagen_header %}
-{% block contenido %}
 
+{% block contenido %}
+    <div align="center"><a class="btn btn-primary btn-sm text-uppercase" href="{% url 'faq' %}">FAQ</a></div>
+    <br>
+    <br>
 {% endblock contenido %}
+
 {% block boton %}
 
 {% endblock boton %}

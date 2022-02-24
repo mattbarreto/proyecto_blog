@@ -116,6 +116,9 @@ def about(request):
 def contacto(request):
     return render(request, 'contacto.html')
 
+def faq(request):
+    return render(request, 'faq.html')
+
 def post_busqueda(request):
 
     return render(request, 'post_busqueda.html')

@@ -1,0 +1,47 @@
+{% extends "padre.html" %}
+{% load static %}
+
+{% block titulo %}FAQ{% endblock titulo %}
+
+{% block titulos_secciones %}
+
+<h2>Instrucciones de Uso</h2>
+
+{% endblock titulos_secciones %}
+
+{% block subtitulo %} {% endblock subtitulo %}
+
+{% block imagen_header %}
+
+{% static 'app_blog/assets/img/faq.jpg' %}
+
+{% endblock imagen_header %}
+
+{% block barra_busqueda %} {% endblock barra_busqueda %}
+
+{% block contenido %}
+
+<div>
+    <h1>¿Cómo funciona este sitio?</h1>
+    <br>
+        <h4>Autores</h4><br>
+        <strong>Listar autores:</strong> /autores | Desde aqui se puede acceder al detalle de cada autor.<br><br>
+        <strong>Agregar autores:</strong> /autores/add <br><br>
+            
+        <h4>Posteos</h4><br>
+        <strong>Post:</strong> /post/add <br><br>
+        <strong>Ver posteos:</strong> acceso a traves de las categorias "Nutricion", "Tips Saludables", "Rutinas" ubicadas en las barras de menu.<br><br>
+        <strong>Buscar posteos:</strong> 1) desde la pagina de inicio se pueden realizar busquedas generales; 2) desde las categorias pueden realizarse busquedas especificas.<br><br>
+        <strong>POST:</strong> "<slug>/delete" donde "slug" corresponde al slug especificado durante la creacion del post.<br><br>
+        <strong>ACTUALIZAR POST:</strong> "<slug>/update" donde "slug" corresponde al slug especificado durante la creacion del post.
+        <br>
+        <br>
+</div>
+
+{% endblock contenido %}
+
+
+
+{% block boton %}
+<div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase"href="{% url 'index' %}">Inicio</a></div>
+{% endblock boton %}
