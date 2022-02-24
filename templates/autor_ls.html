@@ -25,13 +25,15 @@
 <a href="{% url 'Borrar Autor' autor.id %}" style="color: red"><b>Borrar</b></a>
 <br>
 <br>
-
 </div>
-
 {% endfor %}
 
 {% endblock contenido %}
 
-{% block boton %} {% endblock boton %}
+{% block boton %}
+<br>
+<div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase"href="{% url 'Crear Autor' %}">Agregar Autor</a></div>
+<div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase"href="{% url 'index' %}">Inicio</a></div>
+{% endblock boton %}
 
 {% block footer %} {% endblock footer %}

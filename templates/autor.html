@@ -12,9 +12,11 @@
 {% block contenido %}
 
 <h4>Solicitaste ver los datos publicos registrados de:</h4>
-
+<br><br>
 <ul>
-    <p>{{autor.nombre}} {{autor.apellido}} {{autor.email}} </p>
+    <p>{{autor.nombre}} {{autor.apellido}}</p>
+    <p>E-mail de contacto: {{autor.email}}</p>
+    <p>Sitio WEB: {{autor.web}}</p>
 </ul>
 
 {% endblock contenido %}

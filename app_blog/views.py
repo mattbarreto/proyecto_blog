@@ -199,7 +199,7 @@ def autor(request):
                 {'lista_autores': Autor.objects.all()})
 class autorCreateView(CreateView):
     model = Autor
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('Autores')
     fields = (
         'id',
         'nombre',
@@ -220,7 +220,7 @@ class autorDetailView(DetailView):
     template_name = 'autor.html'
 class autorUpdateView(UpdateView):
     model = Autor
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('Autores')
     fields = (
         'id',
         'nombre',
@@ -234,5 +234,5 @@ class autorUpdateView(UpdateView):
 
 class autorDeleteView(DeleteView):
     model = Autor
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('Autores')
     template_name = 'autor_confirm_delete.html'
